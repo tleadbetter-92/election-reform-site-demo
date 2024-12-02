@@ -1,8 +1,8 @@
-import Link from 'next/link';
-import { fetchLaws } from './utils/fetchLaws';
+import Link from 'next/link'
+import { fetchLaws } from './utils/fetchLaws'
 
 export default async function Home() {
-  const laws = await fetchLaws();
+  const laws = await fetchLaws()
 
   return (
     <div className="min-h-screen bg-gray-100 p-8">
@@ -20,6 +20,6 @@ export default async function Home() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 

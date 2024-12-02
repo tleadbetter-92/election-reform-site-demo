@@ -1,8 +1,8 @@
-import Link from 'next/link';
-import { Law } from '../utils/fetchLaws';
+import Link from 'next/link'
+import { Law } from '../utils/fetchLaws'
 
 interface LawPageProps {
-  law: Law;
+  law: Law
 }
 
 export function LawPage({ law }: LawPageProps) {
@@ -21,6 +21,6 @@ export function LawPage({ law }: LawPageProps) {
         </Link>
       </div>
     </div>
-  );
+  )
 }
 
