@@ -1,23 +1,25 @@
-import Link from 'next/link'
+import Link from 'next/link';
+import { fetchLaws } from './utils/fetchLaws';
 
-export default function Home() {
+export default async function Home() {
+  const laws = await fetchLaws();
+
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      <div className="bg-white p-8 rounded-lg shadow-md max-w-2xl w-full">
-        <h1 className="text-3xl font-bold mb-4 text-gray-800">Assisted Dying for Terminally Ill Adults Bill</h1>
-        <p className="text-gray-700 mb-6">
-          A Bill to allow adults who are terminally ill, subject to safeguards, to be assisted to end their own life; and for connected purposes.
-        </p>
-        <Link 
-          href="https://bills.parliament.uk/bills/3741" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors inline-block"
-        >
-          View on Parliament Website
-        </Link>
+    <div className="min-h-screen bg-gray-100 p-8">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-4xl font-bold mb-8 text-center">Election Reform Laws</h1>
+        <div className="grid gap-6">
+          {laws.map((law, index) => (
+            <Link key={index} href={`/laws/${encodeURIComponent(law.shortTitle)}`} className="block">
+              <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <h2 className="text-2xl font-semibold mb-2 text-gray-800">{law.shortTitle}</h2>
+                <p className="text-gray-600">{law.longTitle}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
-  )
+  );
 }
 
